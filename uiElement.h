@@ -38,6 +38,11 @@ void UIElement::position(std::string hori, std::string vert)
         col = box->cols;
         px = box->x + box->w - box->margin - w;
     }
+    if(hori == "center")
+    {
+        col = box->cols / 2;
+        px = box->x + (box->w / 2) - w / 2;
+    }
     if(vert == "top")
     {
         row = 1;
@@ -47,6 +52,11 @@ void UIElement::position(std::string hori, std::string vert)
     {
         row = box->cols;
         py = box->y + box->h - box->margin - h;
+    }
+    if(vert == "center")
+    {
+        row = box->rows / 2;
+        py = box->y + (box->h / 2) - h / 2;
     }
     //Makes sure they don't overlap
     for(int i = 0; i < box->elements.size(); i++)
@@ -64,6 +74,11 @@ void UIElement::position(std::string hori, std::string vert)
                 px -= box->elements[i]->w + box->margin;
                 col--;
             }
+            if(hori == "center")
+            {
+                col = box->cols / 2;
+                px = box->x + (box->w / 2) - w / 2;
+            }
         }
         if(box->elements[i]->c == col) //Same column as another element
         {
@@ -77,6 +92,11 @@ void UIElement::position(std::string hori, std::string vert)
             {
                 py -= box->elements[i]->h + box->margin;
                 row--;
+            }
+            if(vert == "center")
+            {
+                row = box->rows / 2;
+                py = box->y + (box->h / 2) - h / 2;
             }
             
         }
@@ -100,6 +120,11 @@ void UIElement::position(std::string hori, std::string vert)
             col = box->cols;
             px = box->x + box->w - box->margin - w;
         }
+        if(hori == "center")
+        {
+            col = box->cols / 2;
+            px = box->x + (box->w / 2) - w / 2;
+        }
         if(vert == "top")
         {
             py = box->y + box->margin;
@@ -107,6 +132,10 @@ void UIElement::position(std::string hori, std::string vert)
         if(vert == "bottom")
         {
             py = box->y + box->h - box->margin - h;
+        }
+        if(vert == "center")
+        {
+            py = box->y + (box->h / 2) - h / 2;
         }
         //Same code as above
         for(int i = 0; i < box->elements.size(); i++)
@@ -123,6 +152,11 @@ void UIElement::position(std::string hori, std::string vert)
                     px -= box->elements[i]->w + box->margin;
                     col--;
                 }
+                if(hori == "center")
+                {
+                    col = box->cols / 2;
+                    px = box->x + (box->w / 2) - w / 2;
+                }
             }
             if(box->elements[i]->c == col)
             {
@@ -136,7 +170,11 @@ void UIElement::position(std::string hori, std::string vert)
                     py -= box->elements[i]->h + box->margin;
                     row--;
                 }
-                
+                if(vert == "center")
+                {
+                    row = box->rows / 2;
+                    py = box->y + (box->h / 2) - h / 2;
+                }
             }
         }
     }
