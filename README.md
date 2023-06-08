@@ -7,7 +7,7 @@ Can be used to create desktop app UIs using a simple system similar to the HTML/
 ##USAGE:
 The system for creating a UI with QUI is simple:\
 -Create bounding boxes\
--Add elements to them\
+-Add elements to them
 
 CHECK DOCUMENTATION. TUTORIALS COMING SOON.
 
