@@ -13,12 +13,11 @@ class UIElement
 public:
     int x, y, w, h, row, col;
     std::string posX, posY; //Where it should be placed in the BoundingBox ("right" or "left", "top" or "bottom")
-    sf::Texture tex;
-    sf::Sprite img;
     BoundingBox* box; //The box it is contained in
     void position(std::string, std::string); //Positions it in the box
     void render(sf::RenderWindow& window);
-    UIElement(std::string, int, int, BoundingBox*);
+    bool mouseIn(int, int);
+    UIElement(int, int, BoundingBox*);
 };
 
 void UIElement::position(std::string hori, std::string vert)
@@ -27,7 +26,7 @@ void UIElement::position(std::string hori, std::string vert)
     posX = hori;
     posY = vert;
     int px, py; //Where it should be placed
-    //STarting placement based in parameters
+    //Starting placement based in parameters
     if(hori == "left")
     {
         col = 1;
@@ -180,19 +179,18 @@ void UIElement::position(std::string hori, std::string vert)
     }
     x = px;
     y = py;
-    img.setPosition(sf::Vector2f(x, y));
     box->elements.push_back(new DataHolder(w, h, row, col, hori, vert));
 }
 
-void UIElement::render(sf::RenderWindow& window)
+bool UIElement::mouseIn(int mX, int mY)
 {
-    window.draw(img);
+    if(mX > x && mX < x + w && mY > y && mY < y + h)
+        return true;
+    return false;
 }
 
-UIElement::UIElement(std::string path, int sw, int sh, BoundingBox* mybox)
+UIElement::UIElement(int sw, int sh, BoundingBox* mybox)
 {
-    tex.loadFromFile(path);
-    img.setTexture(tex);
     w = sw;
     h = sh;
     row = 1;
