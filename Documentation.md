@@ -1,6 +1,6 @@
 #DOCUMENTATION
 
-
+\
 A **BoundingBox** is a box which contains **UIElement**s. Create one like so:\
 `BoundingBox myBox(x, y, width, height, margin, columns, rows);`\
 x, y -- position (integer)\
@@ -10,7 +10,7 @@ columns, rows -- how many rows and columns of elements you want the box to conta
 
 BoundingBoxes also contain an sf::RectangleShape called **rect** (accessed as **myBox.rect**) which can be used to visualize box.
 
-
+\
 A **UIElement** is what you build your UI out of. Create one like so:\
 `UIElement myElement(width, height, box);`\
 width, height -- size of the element (integer)\
@@ -25,7 +25,7 @@ Position an element:\
 horizontal -- where in the box to place the element, either "left", "center" or "right" (std::string)\
 vertical -- where in the box to place the element, either "top", "center" or "bottom" (std::string)
 
-
+\
 An **Image** is a type of UIElement which has an image which can be rendered. They are created using the UIElement default contructor.
 
 Initialize them:\
